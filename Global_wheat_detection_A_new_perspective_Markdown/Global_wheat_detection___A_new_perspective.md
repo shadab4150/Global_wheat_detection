@@ -16,31 +16,6 @@ for fn in uploaded.keys():
 
 # !kaggle competitions download -c "jigsaw-unintended-bias-in-toxicity-classification"
 ```
-
-
-
-<input type="file" id="files-cc7cd9f8-e377-45ef-872a-1bb95843f1b2" name="files[]" multiple disabled
-   style="border:none" />
-<output id="result-cc7cd9f8-e377-45ef-872a-1bb95843f1b2">
- Upload widget is only available when the cell has been executed in the
- current browser session. Please rerun this cell to enable.
- </output>
- <script src="/nbextensions/google.colab/files.js"></script> 
-
-
-    Saving kaggle.json to kaggle.json
-    User uploaded file "kaggle.json" with length 68 bytes
-    
-
-
-```python
-!touch /root/.kaggle/kaggle.json
-!chmod 600 /root/.kaggle/kaggle.json
-!echo '{"username": "ianmoone0617", "key": "47d1ab33bfcd8eb9ebefb3deadf2f80e"}' > /root/.kaggle/kaggle.json
-
-```
-
-
 ```python
 import kaggle
 kaggle.api.authenticate()
@@ -71,14 +46,6 @@ from google.colab import drive
 drive.mount('/content/drive')
 ```
 
-    Go to this URL in a browser: https://accounts.google.com/o/oauth2/auth?client_id=947318989803-6bn6qk8qdgf4n4g3pfee6491hc0brc4i.apps.googleusercontent.com&redirect_uri=urn%3aietf%3awg%3aoauth%3a2.0%3aoob&response_type=code&scope=email%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdocs.test%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive%20https%3a%2f%2fwww.googleapis.com%2fauth%2fdrive.photos.readonly%20https%3a%2f%2fwww.googleapis.com%2fauth%2fpeopleapi.readonly
-    
-    Enter your authorization code:
-    ··········
-    Mounted at /content/drive
-    
-
-
 ```python
 !cp '/content/global-wheat-detection.zip' '/content/drive/My Drive/Dataset'
 ```
@@ -87,17 +54,6 @@ drive.mount('/content/drive')
 ```python
 !pip install object-detection-fastai
 ```
-
-    Collecting object-detection-fastai
-      Downloading https://files.pythonhosted.org/packages/e4/ec/153a9ace353992e2913178d8c42110209bf9c5debc8338c943580d73416f/object-detection-fastai-0.0.6.tar.gz
-    Building wheels for collected packages: object-detection-fastai
-      Building wheel for object-detection-fastai (setup.py) ... [?25l[?25hdone
-      Created wheel for object-detection-fastai: filename=object_detection_fastai-0.0.6-cp36-none-any.whl size=31580 sha256=45f392bae9546a4ec39a458bbd1b46a4506da7d03812fdfde199c39a90ebf567
-      Stored in directory: /root/.cache/pip/wheels/4c/79/9c/7299e94e248a7102202b922f02da86502f2e6e35dbe07706c8
-    Successfully built object-detection-fastai
-    Installing collected packages: object-detection-fastai
-    Successfully installed object-detection-fastai-0.0.6
-    
 
 
 ```python
@@ -120,9 +76,6 @@ from object_detection_fastai.models.RetinaNet import RetinaNet
 from object_detection_fastai.callbacks.callbacks import BBLossMetrics, BBMetrics, PascalVOCMetric
 ```
 
-    /usr/local/lib/python3.6/dist-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
-      import pandas.util.testing as tm
-    
 
 
 ```python
@@ -158,19 +111,7 @@ train.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -368,14 +309,7 @@ model = RetinaNet(encoder, n_classes=data.train_ds.c, n_anchors=18, sizes=[32,16
 ```
 
     Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to /root/.cache/torch/checkpoints/resnet50-19c8e357.pth
-    
 
-
-    HBox(children=(FloatProgress(value=0.0, max=102502400.0), HTML(value='')))
-
-
-    
-    
 
 
 ```python
@@ -397,25 +331,6 @@ learn.lr_find()
 learn.recorder.plot()
 ```
 
-
-
-    <div>
-        <style>
-            /* Turns off some styling */
-            progress {
-                /* gets rid of default border in Firefox and Opera. */
-                border: none;
-                /* Needs to be in here for Safari polyfill so background images work as expected. */
-                background-size: auto;
-            }
-            .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-                background: #F44336;
-            }
-        </style>
-      <progress value='0' class='' max='1' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      0.00% [0/1 00:00<00:00]
-    </div>
-
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: left;">
@@ -433,30 +348,7 @@ learn.recorder.plot()
   </tbody>
 </table><p>
 
-    <div>
-        <style>
-            /* Turns off some styling */
-            progress {
-                /* gets rid of default border in Firefox and Opera. */
-                border: none;
-                /* Needs to be in here for Safari polyfill so background images work as expected. */
-                background-size: auto;
-            }
-            .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-                background: #F44336;
-            }
-        </style>
-      <progress value='99' class='' max='759' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      13.04% [99/759 00:27<03:05 2.9657]
-    </div>
 
-
-
-    /pytorch/torch/csrc/utils/python_arg_parser.cpp:756: UserWarning: This overload of nonzero is deprecated:
-    	nonzero(Tensor input, *, Tensor out)
-    Consider using one of the following signatures instead:
-    	nonzero(Tensor input, *, bool as_tuple)
-    
 
     LR Finder is complete, type {learner_name}.recorder.plot() to see the graph.
     
